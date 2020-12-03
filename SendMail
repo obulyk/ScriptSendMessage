@@ -1,0 +1,10 @@
+set answer1 to text returned of (display dialog "Type here your message" default answer "" buttons {"OK"} default button 1)
+set answer2 to text returned of (display dialog "Type the e-mail you want to send to" default answer "" buttons {"OK"} default button 1)
+set answer3 to text returned of (display dialog "Type your subject" default answer "" buttons {"OK"} default button 1)
+tell application "Mail"
+	set myMessage to make new outgoing message with properties {visible:true, subject:answer3, content:answer1}
+	tell myMessage
+		make new to recipient with properties {name:answer2, address:answer2}
+		send
+	end tell
+end tell
